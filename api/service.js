@@ -3,8 +3,8 @@ const Services = [
     {
         Id: '1',
         sImgS:'images/service-single/graphics/img-1.jpg',
-        sTitle: '3% LP分红',
-        description:'所有交易的 3% 交易税收 将分红给提供LBB流动性的共识者',
+        sTitle: '3% ___ Tax',
+        description:'3% From All Transactions, to ___',
         des2:'Lacus, etiam sed est eu tempus need Temer diam congue laoret .',
         des3:'One way to categorize the activities is in terms of the professional’s area of expertise such as competitive analysis, corporate strategy the activities',
         icon:'flaticon-vector',
@@ -14,8 +14,8 @@ const Services = [
     {
         Id: '2',
         sImgS:'images/service-single/brand/img-1.jpg',
-        sTitle: '2% 回流',
-        description:'所有交易的 2% 交易税收 将自动回流流动池，将会更加的稳定币价',
+        sTitle: '3% ___ Tax',
+        description:'3% From All Transactions, to ___',
         des2:'Lacus, etiam sed est eu tempus need Temer diam congue laoret .',
         des3:'One way to categorize the activities is in terms of the professional’s area of expertise such as competitive analysis, corporate strategy the activities',
         icon:'flaticon-palette',
@@ -25,8 +25,8 @@ const Services = [
     {
         Id: '3',
         sImgS:'images/service-single/ux/img-1.jpg',
-        sTitle: '2% 营销',
-        description:'所有交易的 2% 交易税收 将作为营销税收，进行代币回购与推广',
+        sTitle: '3% ___ Tax',
+        description:'3% From All Transactions, to ___',
         des2:'Lacus, etiam sed est eu tempus need Temer diam congue laoret .',
         des3:'One way to categorize the activities is in terms of the professional’s area of expertise such as competitive analysis, corporate strategy the activities',
         icon:'flaticon-add',
@@ -91,8 +91,8 @@ const Services = [
     {
         Id: '9',
         sImgS:'images/service-single/email/img-1.jpg',
-        sTitle: '专属邀请连结',
-        description:'使用专属邀请连结 来邀请好友进行IDO，为联盟做出贡献',
+        sTitle: 'Invitation Link',
+        description:'Invitation Link',
         des2:'Lacus, etiam sed est eu tempus need Temer diam congue laoret .',
         des3:'One way to categorize the activities is in terms of the professional’s area of expertise such as competitive analysis, corporate strategy the activities',
         icon:'flaticon-email-marketing',
