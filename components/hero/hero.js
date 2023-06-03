@@ -1,7 +1,6 @@
 import React from "react";
 import { Link} from 'react-scroll'
 
-
 const Hero = () => {
     return (
         <section className="static-hero" id='home'>
@@ -12,14 +11,15 @@ const Hero = () => {
                             <div className="col-xl-6 col-lg-6 col-12">
                                 <div className="wpo-static-hero-inner">
                                     <div data-swiper-parallax="300" className="slide-title">
-                                        <h2><span>Welcome to</span>
-                                        Paofu</h2>
+                                        <h2>
+                                            <span>Safe LP</span>
+                                        </h2>
                                     </div>
                                     <div data-swiper-parallax="300" className="slide-sub-title">
                                         <h5>IDO</h5>
                                     </div>
                                     <div data-swiper-parallax="400" className="slide-text">
-                                        <p>Join Paofu IDO With USDT</p>
+                                        <p>Join Us With USDT</p>
                                     </div>
                                     <div className="clearfix"></div>
                                     <div className="slide-btn"><Link className="theme-btn" to="about" spy={true} smooth={true}  duration={500}>Join Now</Link></div>
@@ -32,7 +32,7 @@ const Hero = () => {
             <div className="static-hero-right">
                 <div className="static-hero-img">
                     <div className="static-hero-img-inner">
-                        <img alt="LOGO" />
+                        <img alt="HI" src="/images/safeLP/SAFELP_01.png" />
                     </div>
                 </div>
             </div>

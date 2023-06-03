@@ -45,7 +45,7 @@ const Footer = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="separator"></div>
-                        <p className="copyright">Copyright &copy; 2023 LBB. All rights reserved.</p>
+                        <p className="copyright">Copyright &copy; 2023 Safe LP. All rights reserved.</p>
                     </div>
                 </div>
             </div>

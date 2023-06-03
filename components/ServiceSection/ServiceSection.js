@@ -32,7 +32,7 @@ const ServiceSection = (props) => {
     return (
         <div className={`wpo-service-area section-padding ${props.sClass}`} id='service'>
             <div className="container">
-                <SectionTitle Title={'About Paofu'} />
+                <SectionTitle Title={'About Safe LP'} />
                 <div className="wpo-service-wrap">
                     <Nav tabs>
                         <div style={{display:'flex', flexDirection:'row'}}>
@@ -60,7 +60,7 @@ const ServiceSection = (props) => {
                                     style={{maxWidth:'200px'}}
                                     onClick={() => { toggle('3'); }}
                                 >
-                                    Unlock
+                                    Start
                                 </NavLink>
                             </NavItem>
                         </div>
@@ -99,8 +99,8 @@ const ServiceSection = (props) => {
                         </TabPane>
                         <TabPane tabId="3">
                             <div className="row align-items-center">
-                                {Services.slice(6, 9).map((service, srv) => (
-                                    <div className="col-lg-4 col-md-6 col-12" key={srv}>
+                                {Services.slice(6, 8).map((service, srv) => (
+                                    <div className="col-lg-6 col-md-6 col-12" key={srv}>
                                         <div className="wpo-service-item">
                                             <div className="icon">
                                                 <i className={`fi ${service.icon}`}></i>

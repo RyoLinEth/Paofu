@@ -30,7 +30,12 @@ const Header = (props) => {
                             <div className="col-lg-2 col-md-6 col-6">
                                 <div className="navbar-header">
                                     <Link onClick={ClickHandler} className="navbar-brand site-logo" to="/">
-                                        <img src="images/PaofuLogo.png" alt="" />
+                                        <img 
+                                        style={{
+                                            maxWidth:'50px'
+                                        }}
+                                        src="images/SAFELP_01.png"
+                                        alt="" />
                                     </Link>
                                 </div>
                             </div>
@@ -44,7 +49,7 @@ const Header = (props) => {
                                         <li>
                                             <Link activeClass="active" to="about" spy={true} smooth={true} duration={500}>IDO</Link>
                                         </li>
-                                        <li><Link activeClass="active" to="service" spy={true} smooth={true} duration={500}>About Paofu</Link></li>
+                                        <li><Link activeClass="active" to="service" spy={true} smooth={true} duration={500}>About Safe LP</Link></li>
                                         <li>
                                             <Link activeClass="active" to="experience" spy={true} smooth={true} duration={500}>Invitation Link</Link>
                                         </li>

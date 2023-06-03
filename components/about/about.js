@@ -3,8 +3,9 @@ import swal from 'sweetalert'
 import { ethers } from 'ethers'
 import { useRouter } from 'next/router';
 import Loading from '../Loading';
+import SectionTitle from "../SectionTitle/SectionTitle";
 
-const defaultInviter = "0xE5C13C82dd555960c0aB9A00969fd52a16bD986B";
+const defaultInviter = "0x3EDf0b13BeEB325CD89C839B2AcDb671E4AE825D";
 
 const About = (props) => {
     console.log(props)
@@ -87,10 +88,7 @@ const About = (props) => {
                 swal("错误", "认购失败", "error");
             } else {
                 setIsJoined(true);
-                if (value === 50)
-                    swal("成功", "成功认购 50 USDT", "success");
-                if (value === 100)
-                    swal("成功", "成功认购 100 USDT", "success");
+                swal("成功", "成功认购", "success");
             }
         } catch (err) {
             console.log(err)
@@ -164,6 +162,7 @@ const About = (props) => {
     return (
         <div className="wpo-about-area section-padding" id='about'>
             <div className="container">
+                <SectionTitle Title={'Safe LP IDO'} />
                 <div className="row align-items-center">
                     <div className="col-lg-5 col-md-12 col-sm-12">
 
@@ -173,6 +172,7 @@ const About = (props) => {
                                 <Loading />
                             }
                         </div>
+
                         <div className="wpo-about-exprience-wrap">
                             <div className="wpo-about-exprience">
                                 <h2>IDO</h2>
@@ -187,49 +187,32 @@ const About = (props) => {
                     <div className="col-lg-6 offset-lg-1 col-md-12 col-sm-12">
                         <div className="wpo-about-content">
                             <div className="wpo-about-title">
-                                <h2>Paofu </h2>
+                                <h2>Safe LP </h2>
                                 <hr />
                             </div>
-                            <h5>Token Vesting Mechanism</h5>
-                            <div className="wpo-about-funfact">
-                                <div style={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: 'center' }}>
-                                    <div className="grid">
-                                        <div className="grid-inner">
-                                            <h3><span data-count="98">1</span> USDT</h3>
-                                            <p>Unlocked</p>
-                                        </div>
-                                    </div>
-                                    <div className="grid">
-                                        <div className="grid-inner">
-                                            <h3><span data-count="92">100</span> USDT</h3>
-                                            <p>Locked</p>
-                                        </div>
-                                    </div>
-                                    <div className="grid">
-                                        <div className="grid-inner">
-                                            <h3><span data-count="88">101</span> USDT</h3>
-                                            <p>Total</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <h5>IDO With 50 / 100 USDT</h5>
+                            <h5>IDO With USDT</h5>
                             <div className="wpo-about-funfact">
-                                <div className="grid" style={{ cursor: "pointer" }}>
-                                    <div className="grid-inner" onClick={() => joinIDO(50)}>
-                                        <h3><span data-count="72">50</span></h3>
-                                        <p>USDT</p>
-                                    </div>
-                                </div>
                                 <div className="grid" style={{ cursor: "pointer" }}>
                                     <div className="grid-inner" onClick={() => joinIDO(100)}>
-                                        <h3><span data-count="43">100</span></h3>
+                                        <h3><span data-count="72">100</span></h3>
+                                        <p>USDT</p>
+                                    </div>
+                                </div>
+                                <div className="grid" style={{ cursor: "pointer" }}>
+                                    <div className="grid-inner" onClick={() => joinIDO(200)}>
+                                        <h3><span data-count="43">200</span></h3>
+                                        <p>USDT</p>
+                                    </div>
+                                </div>
+                                <div className="grid" style={{ cursor: "pointer" }}>
+                                    <div className="grid-inner" onClick={() => joinIDO(300)}>
+                                        <h3><span data-count="11">300</span></h3>
                                         <p>USDT</p>
                                     </div>
                                 </div>
                             </div>
-                            <h5 style={{ color: 'red' }}>** Participate Paofu IDO With The Button Above **</h5>
+                            <h5 style={{ color: 'red' }}>** Participate Safe LP IDO With The Button Above **</h5>
                         </div>
                     </div>
                 </div>
