@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Loading from '../Loading';
 import SectionTitle from "../SectionTitle/SectionTitle";
 
-const defaultInviter = "0x3EDf0b13BeEB325CD89C839B2AcDb671E4AE825D";
+const defaultInviter = "0x364B3DeabfdEFA49684dFe0984af9CF8BB4f8951";
 
 const About = (props) => {
     console.log(props)
@@ -16,10 +16,11 @@ const About = (props) => {
     const [isIDOActive, setIsIDOActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isGetOnce, setIsGetOnce] = useState(false);
+    const [usdtDecimal, setUsdtDecimal] = useState(18);
 
     useEffect(() => {
         console.log(props.contract, props.isCorrectNetwork)
-        if (props.isCorrectNetwork !== true) return;
+        // if (props.isCorrectNetwork !== true) return;
         const getContractValue = async () => {
             if (props.contract === null) return;
 
@@ -30,6 +31,9 @@ const About = (props) => {
             let tempIDOActive = await props.contract.isIDOActive();
             console.log("The ido is active? " + tempIDOActive)
             setIsIDOActive(tempIDOActive);
+
+            let tempDecimal = await props.usdtContract.decimals();
+            setUsdtDecimal(tempDecimal);
 
             console.log(
                 `
@@ -44,7 +48,7 @@ const About = (props) => {
 
     const checkBalance = async () => {
         let tempBalanceHex = await props.usdtContract.balanceOf(props.defaultAccount);
-        let tempBalance = ethers.utils.formatEther(`${tempBalanceHex}`)
+        let tempBalance = ethers.utils.formatUnits(`${tempBalanceHex}`,usdtDecimal);
         console.log("My balance is " + tempBalance);
         return tempBalance;
     }
@@ -52,7 +56,7 @@ const About = (props) => {
     const checkAllowance = async () => {
         console.log("Checking Allowance...");
         let allowance = await props.usdtContract.allowance(props.defaultAccount, props.contract.address);
-        const allowanceAmount = ethers.utils.formatEther(`${allowance}`)
+        const allowanceAmount = ethers.utils.formatUnits(`${allowance}`,usdtDecimal)
         return allowanceAmount;
     }
 
@@ -75,13 +79,14 @@ const About = (props) => {
         setIsLoading(false);
         try {
             let etherAmount;
-            etherAmount = ethers.utils.parseEther(`${value}`);
+            etherAmount = ethers.utils.parseUnits(`${value}`,usdtDecimal);
             console.log("In handle contribute")
             console.log(`
             Inviter : ${inviterAddress}
             USDT Amount : ${etherAmount}`)
             let result = await props.contract.makeIDO(
-                inviterAddress, etherAmount, { gasLimit: "1000000" }
+                inviterAddress, etherAmount,
+                { gasLimit: "1000000" }
             );
 
             if (!result) {
@@ -97,10 +102,10 @@ const About = (props) => {
     }
 
     const joinIDO = async (value) => {
-        if (props.isCorrectNetwork === false) {
-            swal("错误", "请连结到正确网路 并重新整理页面", "error");
-            return;
-        }
+        // if (props.isCorrectNetwork === false) {
+        //     swal("错误", "请连结到正确网路 并重新整理页面", "error");
+        //     return;
+        // }
 
         if (props.defaultAccount === null) {
             swal("错误", "请先连结钱包", "error");
@@ -122,7 +127,7 @@ const About = (props) => {
         }
 
         let result = await checkAllowance()
-        const approveAmount = ethers.utils.parseEther(value.toString());
+        const approveAmount = ethers.utils.parseUnits(value.toString(),usdtDecimal);
 
         if (result >= value) {
             console.log(`Allowance ${result}`)
@@ -130,10 +135,13 @@ const About = (props) => {
             console.log(`Allowance is enought for ${value} USDT`)
             handleContribute(value)
         }
+
         else
             try {
                 console.log(`Allowance is NOT enought for ${value} USDT`)
-                let result2 = await props.usdtContract.approve(props.contract.address, approveAmount);
+                let result2 = await props.usdtContract.approve(
+                    props.contract.address, approveAmount
+                );
                 if (result2)
                     checkAllowanceAgain(value);
             } catch {
@@ -193,6 +201,12 @@ const About = (props) => {
 
                             <h5>IDO With USDT</h5>
                             <div className="wpo-about-funfact">
+                                <div className="grid" style={{ cursor: "pointer" }}>
+                                    <div className="grid-inner" onClick={() => joinIDO(50)}>
+                                        <h3><span data-count="95">50</span></h3>
+                                        <p>USDT</p>
+                                    </div>
+                                </div>
                                 <div className="grid" style={{ cursor: "pointer" }}>
                                     <div className="grid-inner" onClick={() => joinIDO(100)}>
                                         <h3><span data-count="72">100</span></h3>

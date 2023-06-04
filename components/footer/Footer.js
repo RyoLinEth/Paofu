@@ -15,7 +15,7 @@ const Footer = (props) => {
                                 <div className="social-icons">
                                     <ul>
                                         <li>
-                                            <a href="https://t.me/lbbchina">
+                                            <a href="https://t.me/SafeLP_Global">
                                                 <i
                                                     className="ti-location-arrow"
                                                     style={{
@@ -27,19 +27,25 @@ const Footer = (props) => {
                                                 </i>
                                             </a>
                                         </li>
-                                        {/* <li>
-                                            <Link to="/">
-                                                <i className="ti-twitter-alt">
+                                        <li>
+                                            <a href="https://twitter.com/SafeLP_Global">
+                                                <i className="ti-twitter-alt"
+                                                    style={{
+                                                        border: "1px solid white",
+                                                        borderRadius: "40px",
+                                                        fontSize: "5px",
+                                                        padding: "3px"
+                                                    }}>
                                                 </i>
-                                            </Link>
-                                        </li> */}
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-              
+
             </div>
             <div className="lower-footer">
                 <div className="container">

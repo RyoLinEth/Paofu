@@ -4,7 +4,7 @@ import swal from 'sweetalert'
 
 const Expriences = [
     {
-        date: '专属邀请连结',
+        date: 'Invitation Link',
     },
 ]
 
@@ -40,7 +40,7 @@ const ExprienceSec = (props) => {
     return (
         <div className="wpo-work-area section-padding" id="experience">
             <div className="container">
-                <SectionTitle Title={'我的邀请连结'} />
+                <SectionTitle Title={'My Invitation Link'} />
                 <div className="wpo-work-wrap">
                     {Expriences.map((exprience, exp) => (
                         <div className="wpo-work-item" key={exp}>
@@ -48,7 +48,7 @@ const ExprienceSec = (props) => {
                                 <li className="date">{exprience.date}</li>
                                 <li style={{ wordWrap: 'break-word', maxWidth: '80vw' }}>{inviteLink}</li>
                                 <li className="link" onClick={copyLink}>
-                                    <a>复制连结</a>
+                                    <a>Copy Link</a>
                                 </li>
                             </ul>
                         </div>
