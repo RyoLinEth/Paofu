@@ -10,7 +10,7 @@ const Expriences = [
 
 
 const ExprienceSec = (props) => {
-    const defaultInviteLink = "尚未连结钱包";
+    const defaultInviteLink = "Wallet Not Connected";
     const [inviteLink, setInviteLink] = useState(defaultInviteLink);
 
     const generateLink = (value) => {

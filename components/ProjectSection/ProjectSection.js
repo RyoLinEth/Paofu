@@ -9,7 +9,7 @@ const ProjectSection = (props) => {
     const [hasClaimed, setHasClaimed] = useState(false);
 
     useEffect(() => {
-        // if (props.isCorrectNetwork !== true) return;
+        if (props.isCorrectNetwork !== true) return;
         const getContractValue = async () => {
             if (props.contract === null) return;
 
@@ -36,10 +36,10 @@ const ProjectSection = (props) => {
     }, [props.defaultAccount, props.contract, props.isCorrectNetwork])
 
     const handleClaim = async () => {
-        // if (props.isCorrectNetwork === false) {
-        //     swal("错误", "请连结到正确网路 并重新整理页面", "error");
-        //     return;
-        // }
+        if (props.isCorrectNetwork === false) {
+            swal("错误", "请连结到正确网路 并重新整理页面", "error");
+            return;
+        }
 
         if (!isClaimActive) {
             swal("错误", "未开放提币", "error")

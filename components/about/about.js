@@ -20,7 +20,7 @@ const About = (props) => {
 
     useEffect(() => {
         console.log(props.contract, props.isCorrectNetwork)
-        // if (props.isCorrectNetwork !== true) return;
+        if (props.isCorrectNetwork !== true) return;
         const getContractValue = async () => {
             if (props.contract === null) return;
 
@@ -102,10 +102,10 @@ const About = (props) => {
     }
 
     const joinIDO = async (value) => {
-        // if (props.isCorrectNetwork === false) {
-        //     swal("错误", "请连结到正确网路 并重新整理页面", "error");
-        //     return;
-        // }
+        if (props.isCorrectNetwork === false) {
+            swal("错误", "请连结到正确网路 并重新整理页面", "error");
+            return;
+        }
 
         if (props.defaultAccount === null) {
             swal("错误", "请先连结钱包", "error");
