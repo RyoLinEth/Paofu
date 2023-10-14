@@ -34,7 +34,7 @@ const Header = (props) => {
                                             style={{
                                                 maxWidth: '50px'
                                             }}
-                                            src="images/SAFELP_01.png"
+                                            src="images/TED.png"
                                             alt="" />
                                     </Link>
                                 </div>

@@ -82,8 +82,11 @@ const ProjectSection = (props) => {
                             </div>
                         </div>
                         <div className="col-lg-6 offset-lg-2">
-                            <div className="sec-title-icon" onClick={handleClaim}>
-                                <i className="fi flaticon-self-growth"></i>
+                            <div className="sec-title-icon" onClick={handleClaim} style={{
+                                cursor: 'pointer'
+                            }}>
+                                {/* <i className="fi flaticon-self-growth"></i> */}
+                                <img alt="HI" src="/images/safeLP/USD.png" />
                             </div>
                         </div>
                     </div>
