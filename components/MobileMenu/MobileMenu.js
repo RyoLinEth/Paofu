@@ -8,9 +8,7 @@ const menus = [
         title: 'Home',
         link: 'home',
     },
-
 ]
-
 
 const MobileMenu = () => {
 
@@ -30,17 +28,27 @@ const MobileMenu = () => {
 
                 <ul className="responsivemenu">
                     <li className="menu-item-has-children">
-                        <AnchorLink href='#scrool'>Home</AnchorLink>
+                        <AnchorLink href='#scrool'>首页</AnchorLink>
                     </li>
                     <li>
-                        <Link activeClass="active" to="about" spy={true} smooth={true} duration={500}>IDO</Link>
-                    </li>
-                    <li><Link activeClass="active" to="service" spy={true} smooth={true} duration={500}>About Safe LP</Link></li>
-                    <li>
-                        <Link activeClass="active" to="experience" spy={true} smooth={true} duration={500}>Invitation Link</Link>
+                        <Link activeClass="active" to="about" spy={true} smooth={true} duration={500}>
+                            IDO
+                        </Link>
                     </li>
                     <li>
-                        <Link activeClass="active" to="portfolio" spy={true} smooth={true} duration={500} >Claim Token</Link>
+                        <Link activeClass="active" to="service" spy={true} smooth={true} duration={500}>
+                            關於 TED
+                        </Link>
+                    </li>
+                    <li>
+                        <Link activeClass="active" to="experience" spy={true} smooth={true} duration={500}>
+                            邀請鏈接
+                        </Link>
+                    </li>
+                    <li>
+                        <Link activeClass="active" to="portfolio" spy={true} smooth={true} duration={500}>
+                            領取USD與礦機
+                        </Link>
                     </li>
                 </ul>
 

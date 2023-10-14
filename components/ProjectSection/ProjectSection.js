@@ -77,8 +77,8 @@ const ProjectSection = (props) => {
                     <div className="row align-items-center">
                         <div className="col-lg-4 col-12">
                             <div className="title">
-                                <h2>Claim Token</h2>
-                                <p>Claim Your LP by clicking on the button</p>
+                                <h2>领取USD与矿机</h2>
+                                <p>点击按钮 领取USD 与 矿机</p>
                             </div>
                         </div>
                         <div className="col-lg-6 offset-lg-2">

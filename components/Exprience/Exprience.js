@@ -1,24 +1,46 @@
 import React, { useState, useEffect } from 'react'
 import SectionTitle from '../SectionTitle/SectionTitle'
 import swal from 'sweetalert'
-
-const Expriences = [
-    {
-        date: 'Invitation Link',
-    },
-]
-
+import { ethers } from 'ethers'
 
 const ExprienceSec = (props) => {
-    const defaultInviteLink = "Wallet Not Connected";
+    console.log(props)
+
+    const defaultInviteLink = "钱包未链接";
     const [inviteLink, setInviteLink] = useState(defaultInviteLink);
+    const [invitationAmount_1, setInvitationAmount_1] = useState(0);
+    const [invitationAmount_2, setInvitationAmount_2] = useState(0);
+    const [usdtDecimal, setUsdtDecimal] = useState(9);
+
+
+    const Expriences = [
+        {
+            title: '邀请链接',
+            content: inviteLink,
+            isButton: true,
+            button_content: "复制链接",
+        },
+        {
+            title: '直推收益 (3%) ',
+            content: invitationAmount_1,
+            isButton: false,
+            button_content: "",
+        },
+        {
+            title: '间推收益 (2%) ',
+            content: invitationAmount_2,
+            isButton: false,
+            button_content: "",
+        }
+    ]
+
 
     const generateLink = (value) => {
         let tempLink = window.location.origin + "/?inviter=" + value;
         setInviteLink(tempLink);
     }
 
-    
+
     const copyLink = () => {
         if (inviteLink === defaultInviteLink) {
             swal("错误", "尚未连结钱包", "error")
@@ -37,19 +59,64 @@ const ExprienceSec = (props) => {
         }
     }, [props.defaultAccount])
 
+    const hexToDecimal = (value) => {
+        return ethers.utils.formatUnits(`${value}`,usdtDecimal);
+    }
+
+    useEffect(() => {
+        if (props.isCorrectNetwork !== true) return;
+        const getContractValue = async () => {
+            if (props.contract === null) return;
+
+            let tempInvitationAmount_1 = await props.contract.invitationAmount_1(props.defaultAccount);
+            setInvitationAmount_1(hexToDecimal(tempInvitationAmount_1));
+
+            let tempInvitationAmount_2 = await props.contract.invitationAmount_2(props.defaultAccount);
+            setInvitationAmount_2(hexToDecimal(tempInvitationAmount_2));
+            
+            let tempDecimal = await props.usdtContract.decimals();
+            setUsdtDecimal(tempDecimal);
+        }
+        getContractValue();
+    }, [props.contract, props.defaultAccount, props.isCorrectNetwork])
+
     return (
         <div className="wpo-work-area section-padding" id="experience">
             <div className="container">
-                <SectionTitle Title={'My Invitation Link'} />
+                <SectionTitle Title={'我的邀请链接'} />
                 <div className="wpo-work-wrap">
                     {Expriences.map((exprience, exp) => (
-                        <div className="wpo-work-item" key={exp}>
+                        <div className="wpo-work-item" key={exprience.title}>
                             <ul>
-                                <li className="date">{exprience.date}</li>
-                                <li style={{ wordWrap: 'break-word', maxWidth: '80vw' }}>{inviteLink}</li>
-                                <li className="link" onClick={copyLink}>
-                                    <a>Copy Link</a>
+                                <li className="date">
+                                    {exprience.title}
                                 </li>
+
+                                <li style={{ wordWrap: 'break-word', maxWidth: '80vw' }}>
+                                    {exprience.content}
+                                    {
+                                        !exprience.isButton && props.defaultAccount !== null &&
+                                        <span style={{ marginLeft: '10px' }}>
+                                            USDT
+                                        </span>
+                                    }
+                                </li>
+                                {
+                                    !exprience.isButton && props.defaultAccount === null &&
+                                    <li style={{ wordWrap: 'break-word', maxWidth: '80vw' }}>
+                                        链接钱包查看邀请收益
+                                    </li>
+                                }
+                                {
+                                    exprience.isButton &&
+                                    <li
+                                        className="link"
+                                        onClick={copyLink}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        <a>复制链接</a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     ))}

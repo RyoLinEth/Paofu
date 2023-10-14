@@ -1,5 +1,5 @@
 import React from "react";
-import { Link} from 'react-scroll'
+import { Link } from 'react-scroll'
 
 const Hero = () => {
     return (
@@ -12,17 +12,21 @@ const Hero = () => {
                                 <div className="wpo-static-hero-inner">
                                     <div data-swiper-parallax="300" className="slide-title">
                                         <h2>
-                                            <span>Safe LP</span>
+                                            <span>TED</span>
                                         </h2>
                                     </div>
                                     <div data-swiper-parallax="300" className="slide-sub-title">
                                         <h5>IDO</h5>
                                     </div>
                                     <div data-swiper-parallax="400" className="slide-text">
-                                        <p>Join Us With USDT</p>
+                                        <p>加入我们</p>
                                     </div>
                                     <div className="clearfix"></div>
-                                    <div className="slide-btn"><Link className="theme-btn" to="about" spy={true} smooth={true}  duration={500}>Join Now</Link></div>
+                                    <div className="slide-btn">
+                                        <Link className="theme-btn" to="about" spy={true} smooth={true} duration={500}>
+                                        加入我们
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,12 +85,12 @@ const Hero = () => {
                     </defs>
                 </svg>
             </div>
-            <div className="line-shape-1">
+            {/* <div className="line-shape-1">
                 <img src='images/slider/line-1.png' alt="" />
             </div>
             <div className="line-shape-2">
                 <img src='images/slider/line-2.png' alt="" />
-            </div>
+            </div> */}
         </section>
     )
 }

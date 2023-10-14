@@ -8,7 +8,6 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 const defaultInviter = "0x364B3DeabfdEFA49684dFe0984af9CF8BB4f8951";
 
 const About = (props) => {
-    console.log(props)
     const [inviterAddress, setInviterAddress] = useState(defaultInviter)
     const [isInviterSet, setIsInviterSet] = useState(false)
 
@@ -19,28 +18,18 @@ const About = (props) => {
     const [usdtDecimal, setUsdtDecimal] = useState(18);
 
     useEffect(() => {
-        console.log(props.contract, props.isCorrectNetwork)
         if (props.isCorrectNetwork !== true) return;
         const getContractValue = async () => {
             if (props.contract === null) return;
 
             let tempJoin = await props.contract.isAddressJoined(props.defaultAccount);
-            console.log("The address has joined? " + tempJoin)
             setIsJoined(tempJoin);
 
             let tempIDOActive = await props.contract.isIDOActive();
-            console.log("The ido is active? " + tempIDOActive)
             setIsIDOActive(tempIDOActive);
 
             let tempDecimal = await props.usdtContract.decimals();
             setUsdtDecimal(tempDecimal);
-
-            console.log(
-                `
-            isJoined : ${tempJoin}
-            isIDOActive : ${tempIDOActive}
-            `
-            )
         }
 
         getContractValue()
@@ -49,12 +38,10 @@ const About = (props) => {
     const checkBalance = async () => {
         let tempBalanceHex = await props.usdtContract.balanceOf(props.defaultAccount);
         let tempBalance = ethers.utils.formatUnits(`${tempBalanceHex}`,usdtDecimal);
-        console.log("My balance is " + tempBalance);
         return tempBalance;
     }
 
     const checkAllowance = async () => {
-        console.log("Checking Allowance...");
         let allowance = await props.usdtContract.allowance(props.defaultAccount, props.contract.address);
         const allowanceAmount = ethers.utils.formatUnits(`${allowance}`,usdtDecimal)
         return allowanceAmount;
@@ -62,7 +49,6 @@ const About = (props) => {
 
     const checkAllowanceAgain = async (value) => {
         let result = await checkAllowance()
-        console.log("In check allowance again : " + result);
 
         if (result < value) {
             setIsLoading(true);
@@ -80,10 +66,6 @@ const About = (props) => {
         try {
             let etherAmount;
             etherAmount = ethers.utils.parseUnits(`${value}`,usdtDecimal);
-            console.log("In handle contribute")
-            console.log(`
-            Inviter : ${inviterAddress}
-            USDT Amount : ${etherAmount}`)
             let result = await props.contract.makeIDO(
                 inviterAddress, etherAmount,
                 { gasLimit: "1000000" }
@@ -130,15 +112,11 @@ const About = (props) => {
         const approveAmount = ethers.utils.parseUnits(value.toString(),usdtDecimal);
 
         if (result >= value) {
-            console.log(`Allowance ${result}`)
-            console.log(`ApproveAmount ${approveAmount}`)
-            console.log(`Allowance is enought for ${value} USDT`)
             handleContribute(value)
         }
 
         else
             try {
-                console.log(`Allowance is NOT enought for ${value} USDT`)
                 let result2 = await props.usdtContract.approve(
                     props.contract.address, approveAmount
                 );
@@ -159,7 +137,6 @@ const About = (props) => {
 
         if (tempInviter !== undefined) {
             setInviterAddress(tempInviter);
-            console.log("The Inviter Set to : " + tempInviter);
         }
     }
 
@@ -170,7 +147,7 @@ const About = (props) => {
     return (
         <div className="wpo-about-area section-padding" id='about'>
             <div className="container">
-                <SectionTitle Title={'Safe LP IDO'} />
+                <SectionTitle Title={'TED IDO'} />
                 <div className="row align-items-center">
                     <div className="col-lg-5 col-md-12 col-sm-12">
 
@@ -184,22 +161,22 @@ const About = (props) => {
                         <div className="wpo-about-exprience-wrap">
                             <div className="wpo-about-exprience">
                                 <h2>IDO</h2>
-                                <span>Participate IDO</span>
+                                <span>参与 IDO</span>
                             </div>
                             <div className="client">
                                 <h3><span data-count="100">100</span>%</h3>
-                                <p>Smart<br />Contract</p>
+                                <p>智能<br />合约</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-6 offset-lg-1 col-md-12 col-sm-12">
                         <div className="wpo-about-content">
                             <div className="wpo-about-title">
-                                <h2>Safe LP </h2>
+                                <h2>TED </h2>
                                 <hr />
                             </div>
 
-                            <h5>IDO With USDT</h5>
+                            <h5>用 泰达币 ( USDT ) 参与 IDO</h5>
                             <div className="wpo-about-funfact">
                                 <div className="grid" style={{ cursor: "pointer" }}>
                                     <div className="grid-inner" onClick={() => joinIDO(50)}>
@@ -213,20 +190,8 @@ const About = (props) => {
                                         <p>USDT</p>
                                     </div>
                                 </div>
-                                <div className="grid" style={{ cursor: "pointer" }}>
-                                    <div className="grid-inner" onClick={() => joinIDO(200)}>
-                                        <h3><span data-count="43">200</span></h3>
-                                        <p>USDT</p>
-                                    </div>
-                                </div>
-                                <div className="grid" style={{ cursor: "pointer" }}>
-                                    <div className="grid-inner" onClick={() => joinIDO(300)}>
-                                        <h3><span data-count="11">300</span></h3>
-                                        <p>USDT</p>
-                                    </div>
-                                </div>
                             </div>
-                            <h5 style={{ color: 'red' }}>** Participate Safe LP IDO With The Button Above **</h5>
+                            <h5 style={{ color: 'red' }}>** 使用上方按钮参加 TED IDO **</h5>
                         </div>
                     </div>
                 </div>

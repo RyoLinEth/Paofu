@@ -32,7 +32,7 @@ const ServiceSection = (props) => {
     return (
         <div className={`wpo-service-area section-padding ${props.sClass}`} id='service'>
             <div className="container">
-                <SectionTitle Title={'About Safe LP'} />
+                <SectionTitle Title={'关于 TED'} />
                 <div className="wpo-service-wrap">
                     <Nav tabs>
                         <div style={{display:'flex', flexDirection:'row'}}>
@@ -42,7 +42,7 @@ const ServiceSection = (props) => {
                                     style={{maxWidth:'200px'}}
                                     onClick={() => { toggle('1'); }}
                                 >
-                                    Token
+                                    TED
                                 </NavLink>
                             </NavItem>
                             <NavItem>
@@ -51,7 +51,7 @@ const ServiceSection = (props) => {
                                     style={{maxWidth:'200px'}}
                                     onClick={() => { toggle('2'); }}
                                 >
-                                    IDO
+                                    USD
                                 </NavLink>
                             </NavItem>
                             <NavItem>
@@ -60,7 +60,7 @@ const ServiceSection = (props) => {
                                     style={{maxWidth:'200px'}}
                                     onClick={() => { toggle('3'); }}
                                 >
-                                    Start
+                                    矿机
                                 </NavLink>
                             </NavItem>
                         </div>
