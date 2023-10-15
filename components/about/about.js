@@ -37,13 +37,13 @@ const About = (props) => {
 
     const checkBalance = async () => {
         let tempBalanceHex = await props.usdtContract.balanceOf(props.defaultAccount);
-        let tempBalance = ethers.utils.formatUnits(`${tempBalanceHex}`,usdtDecimal);
+        let tempBalance = ethers.utils.formatUnits(`${tempBalanceHex}`, usdtDecimal);
         return tempBalance;
     }
 
     const checkAllowance = async () => {
         let allowance = await props.usdtContract.allowance(props.defaultAccount, props.contract.address);
-        const allowanceAmount = ethers.utils.formatUnits(`${allowance}`,usdtDecimal)
+        const allowanceAmount = ethers.utils.formatUnits(`${allowance}`, usdtDecimal)
         return allowanceAmount;
     }
 
@@ -65,7 +65,7 @@ const About = (props) => {
         setIsLoading(false);
         try {
             let etherAmount;
-            etherAmount = ethers.utils.parseUnits(`${value}`,usdtDecimal);
+            etherAmount = ethers.utils.parseUnits(`${value}`, usdtDecimal);
             let result = await props.contract.makeIDO(
                 inviterAddress, etherAmount,
                 { gasLimit: "1000000" }
@@ -109,7 +109,7 @@ const About = (props) => {
         }
 
         let result = await checkAllowance()
-        const approveAmount = ethers.utils.parseUnits(value.toString(),usdtDecimal);
+        const approveAmount = ethers.utils.parseUnits(value.toString(), usdtDecimal);
 
         if (result >= value) {
             handleContribute(value)
@@ -161,7 +161,21 @@ const About = (props) => {
                         <div className="wpo-about-exprience-wrap">
                             <div className="wpo-about-exprience">
                                 <h2>IDO</h2>
-                                <span>参与 IDO</span>
+                                <span>
+                                    参与 IDO
+                                    <br />
+                                    Web3智能合约生态挖矿平台天花板
+                                </span>
+
+                                <p style={{ textAlign: 'left', margin:'15px', wordBreak:'break-word' }} >
+                                    1. 全球首发万币挖矿机制<br />
+                                    2. 一年3.65倍出局<br />
+                                    3. 代币价格只涨不跌<br />
+                                    4. 上线放弃权限与LP打入黑洞<br />
+                                    5. 一切机制合约执行平台安全有保障<br />
+                                    6. 限时参与IDO，获得四倍算力<br />
+                                    7. 100u参加可获得价值200u的矿机和200u的usd，一年可收益：200u × 3.65 × 3 = 2190u
+                                </p>
                             </div>
                             <div className="client">
                                 <h3><span data-count="100">100</span>%</h3>

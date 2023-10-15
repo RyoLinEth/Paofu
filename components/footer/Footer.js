@@ -25,7 +25,7 @@ const Footer = (props) => {
                             <div className="widget about-widget">
                                 <div className="social-icons">
                                     <ul>
-                                        {
+                                        {/* {
                                             Links.map((Link, index) => {
                                                 return (
                                                     <li key={Link.className}>
@@ -43,7 +43,7 @@ const Footer = (props) => {
                                                     </li>
                                                 )
                                             })
-                                        }
+                                        } */}
                                     </ul>
                                 </div>
                             </div>

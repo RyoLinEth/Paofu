@@ -60,7 +60,7 @@ const ExprienceSec = (props) => {
     }, [props.defaultAccount])
 
     const hexToDecimal = (value) => {
-        return ethers.utils.formatUnits(`${value}`,usdtDecimal);
+        return ethers.utils.formatUnits(`${value}`, usdtDecimal);
     }
 
     useEffect(() => {
@@ -73,7 +73,7 @@ const ExprienceSec = (props) => {
 
             let tempInvitationAmount_2 = await props.contract.invitationAmount_2(props.defaultAccount);
             setInvitationAmount_2(hexToDecimal(tempInvitationAmount_2));
-            
+
             let tempDecimal = await props.usdtContract.decimals();
             setUsdtDecimal(tempDecimal);
         }
@@ -93,11 +93,14 @@ const ExprienceSec = (props) => {
                                 </li>
 
                                 <li style={{ wordWrap: 'break-word', maxWidth: '80vw' }}>
-                                    {exprience.content}
+                                    {
+                                        exprience.isButton &&
+                                        exprience.content
+                                    }
                                     {
                                         !exprience.isButton && props.defaultAccount !== null &&
                                         <span style={{ marginLeft: '10px' }}>
-                                            USDT
+                                            {exprience.content} USDT
                                         </span>
                                     }
                                 </li>
