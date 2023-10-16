@@ -43,8 +43,8 @@ const WalletConnect = ({ defaultAccountChange, isCorrectNetwork }) => {
         // console.log('Connected to chain:' + chainId)
 
         // const netWorkID = '0x42'
-        const netWorkID = '0x61'
-        // const netWorkID = '0x38'
+        // const netWorkID = '0x61'
+        const netWorkID = '0x38'
 
         if (chainId !== netWorkID) {
             // setCorrectNetwork(network => network = false)
