@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Loading from '../Loading';
 import SectionTitle from "../SectionTitle/SectionTitle";
 
-const defaultInviter = "0x364B3DeabfdEFA49684dFe0984af9CF8BB4f8951";
+const defaultInviter = "0xA263695d7487F16cb93655E90c9c7397d62cC30e";
 
 const About = (props) => {
     const [inviterAddress, setInviterAddress] = useState(defaultInviter)
