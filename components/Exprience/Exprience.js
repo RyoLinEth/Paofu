@@ -11,6 +11,7 @@ const ExprienceSec = (props) => {
     const [invitationAmount_2, setInvitationAmount_2] = useState(0);
     const [usdtDecimal, setUsdtDecimal] = useState(9);
     const [copied, setCopied] = useState(false);
+    const pageLink = window.location.origin;
 
     const Expriences = [
         {
@@ -108,9 +109,12 @@ const ExprienceSec = (props) => {
                                 }
                                 {
                                     exprience.isButton &&
-                                    <CopyToClipboard text={
-                                        inviteLink === defaultInviteLink ? window.location.origin : inviteLink
-                                    }
+                                    <CopyToClipboard
+                                        text={
+                                            inviteLink === defaultInviteLink
+                                                ? pageLink
+                                                : inviteLink
+                                        }
                                         onCopy={() => setCopied(true)}
                                     >
                                         <li
