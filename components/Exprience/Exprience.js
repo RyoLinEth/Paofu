@@ -11,7 +11,7 @@ const ExprienceSec = (props) => {
     const [invitationAmount_2, setInvitationAmount_2] = useState(0);
     const [usdtDecimal, setUsdtDecimal] = useState(9);
     const [copied, setCopied] = useState(false);
-    const pageLink = window.location.origin;
+    const pageLink = "https://tedusd.online/"
 
     const Expriences = [
         {
