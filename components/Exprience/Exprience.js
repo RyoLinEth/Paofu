@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react'
 import SectionTitle from '../SectionTitle/SectionTitle'
 import swal from 'sweetalert'
 import { ethers } from 'ethers'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExprienceSec = (props) => {
-    console.log(props)
-
     const defaultInviteLink = "钱包未链接";
     const [inviteLink, setInviteLink] = useState(defaultInviteLink);
     const [invitationAmount_1, setInvitationAmount_1] = useState(0);
     const [invitationAmount_2, setInvitationAmount_2] = useState(0);
     const [usdtDecimal, setUsdtDecimal] = useState(9);
-
+    const [copied, setCopied] = useState(false);
 
     const Expriences = [
         {
@@ -41,16 +40,13 @@ const ExprienceSec = (props) => {
     }
 
 
-    const copyLink = () => {
+    const handleCopyLink = () => {
         if (inviteLink === defaultInviteLink) {
             swal("错误", "尚未连结钱包", "error")
             return;
         }
-        navigator.clipboard.writeText(inviteLink).then(() => {
-            swal("成功", `已成功复制连结 ${inviteLink}`, "success")
-        }, (err) => {
-            swal("错误", "复制失败 请手动复制连结", "error")
-        })
+        swal("成功", `已成功复制连结 ${inviteLink}`, "success")
+        return;
     }
 
     useEffect(() => {
@@ -112,13 +108,17 @@ const ExprienceSec = (props) => {
                                 }
                                 {
                                     exprience.isButton &&
-                                    <li
-                                        className="link"
-                                        onClick={copyLink}
-                                        style={{ cursor: 'pointer' }}
+                                    <CopyToClipboard text={
+                                        inviteLink === defaultInviteLink ? window.location.origin : inviteLink
+                                    }
+                                        onCopy={() => setCopied(true)}
                                     >
-                                        <a>复制链接</a>
-                                    </li>
+                                        <li
+                                            onClick={handleCopyLink}
+                                        >
+                                            <a style={{ cursor: 'pointer' }}>复制链接</a>
+                                        </li>
+                                    </CopyToClipboard>
                                 }
                             </ul>
                         </div>
